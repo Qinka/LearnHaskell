@@ -1,0 +1,33 @@
+%chapter1.tex
+%第一部分
+%起步
+
+\chapter{开始}
+这一部分，解决的是初期环境的配置问题，以最基本的一些与Haskell语法语素无关的东西。
+
+学习Haskell，你需要两样东西：编译器与编辑器。编辑器会影响编写代码的效率，而这正是为什么 Microsoft Visual Studio 是世界最好的IDE\footnote{集成开发环境（Integrated Development Environment）}的原因了。而编译器则选用GHC \footnote{Glasgow Haskell Compiler}。
+还可以使用Haskell Platform。
+\section{Haskell的编译器——GHC}
+笔者现在使用的GHC的版本是 7.10.2，安装的方法因系统而异。笔者现在使用的是 Microsoft Windows 10 Pro 的系统。
+\subsection{Windows}
+GHC 的下载地址是 \url{http://www..haskell.org/ghc}。安装则需要将 压缩包解压后将 \verb"bin" 文件夹与 \verb"mingw/bin" 添加到 \verb"PATH" 环境变量中。
+
+对于Haskell Platform下载地址 \url{https://www.haskell.org/platform}。直接点击安装包就好。
+\subsection{Linux}
+GHC 的下载地址GHC 的下载地址是 \url{http://www..haskell.org/ghc}。安装则需要将压缩包解压后。先下安装一些必要的软件，例如在Ubuntu下
+\begin{lstlisting}[language=bash]
+	sudo apt-get install libedit2 libedit-dev freeglut3-dev libglu1-mesa-dev libgmp3-dev
+\end{lstlisting}
+
+Haskell Platform 这需要去 \url{https://www.haskell.org/platform/windows.html#linux} 下载。
+\subsection{OS X}
+对于Haskell Platform 和 GHC 的安装方法请参考网上。
+
+\section{效率利器-编辑器}
+\begin{description}
+  \item[Vim]\verb"vim" 编辑器是被广泛使用的编辑器。\verb"vim"自带 Haskell 的语法高亮。同时\verb"vim" 有 对 Haskell的交互——GHCi提供支持。详细信息访问\url{http://www.vim.org/scripts/script.php?script_id=2356}   
+  \item[Emacs]\verb"emacs" 可以算是人气比较高的编辑器，使用又强大。emacs通体有Lisp编写，然而并没有什么卵用。。
+  \item[Yi]\verb"Yi"是一个由Haskell编写而可由Haskell扩展。
+  \item[] 
+\end{description}
+\endinput 
