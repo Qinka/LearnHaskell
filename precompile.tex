@@ -1,0 +1,23 @@
+%预编译内容
+
+\makeatletter
+\def\onePrecompile{\@ifundefined{markPrecompile}{\relax}{\endinput}}
+\makeatother
+\onePrecompile
+%%%%%%%%%%%%%
+\makeatletter
+
+
+\def\aheadInfo{\@ifundefined{allBook}{\documentclass[UTF8]{ctexart}}{\relax}}
+\def\documentBegin{\@ifundefined{allBook}{\begin{document}}{\relax}}
+\def\documentEnd{\@ifundefined{allBook}{\end{document}}{\relax}}
+\def\IfAllBool#1#2{\@ifundefined{allBook}{#2}{#1}}
+\def\titleOrChaptter#1{\@ifundefined{allBook}{\title{Haskell讲义\\ [2ex] \begin{large} #1 \end{large}} \maketitle }{\chapter{#1}}}
+
+
+\makeatother
+%%%%%%%%%%%%%
+\def\markPrecompile{\relax}
+\endinput
+
+

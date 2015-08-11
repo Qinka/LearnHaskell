@@ -1,8 +1,11 @@
 %chapter1.tex
 %第一部分
 %起步
-
-\chapter{开始}
+\input{precompile}
+\aheadInfo
+\input{preamble}
+\documentBegin
+\titleOrChaptter{开始}
 这一部分，解决的是初期环境的配置问题，以最基本的一些与Haskell语法语素无关的东西。
 
 学习Haskell，你需要两样东西：编译器与编辑器。编辑器会影响编写代码的效率，而这正是为什么 Microsoft Visual Studio 是世界最好的IDE\footnote{集成开发环境（Integrated Development Environment）}的原因了。而编译器则选用GHC \footnote{Glasgow Haskell Compiler}。
@@ -18,21 +21,45 @@ GHC 的下载地址GHC 的下载地址是 \url{http://www..haskell.org/ghc}。�
 \begin{lstlisting}[language=bash]
 	sudo apt-get install libedit2 libedit-dev freeglut3-dev libglu1-mesa-dev libgmp3-dev
 \end{lstlisting}
-
 Haskell Platform 这需要去 \url{https://www.haskell.org/platform/windows.html#linux} 下载。
 \subsection{OS X}
 对于Haskell Platform 和 GHC 的安装方法请参考网上。
-
 \section{效率利器-编辑器}
 \begin{description}
-  \item[Vim]\verb"vim" 编辑器是被广泛使用的编辑器。\verb"vim"自带 Haskell 的语法高亮。同时\verb"vim" 有 对 Haskell的交互——GHCi提供支持。详细信息访问\url{http://www.vim.org/scripts/script.php?script_id=2356}   
-  \item[Emacs]\verb"emacs" 可以算是人气比较高的编辑器，使用又强大。emacs通体有Lisp编写，然而并没有什么卵用。。\\ 详细信息访问
-  \url{https://wiki.haskell.org/Emacs}
-  \item[Yi]\verb"Yi"是一个由Haskell编写而可由Haskell扩展。详细信息访问\url{https://wiki.haskell.org/Yi}
-  \item[Sublime Text] \verb"Sublime Text" 是一个先进的编辑器。详细信息访问\url{https://wiki.haskell.org/IDEs#Sublime-Haskell}
-  \item[Leksah] 也是一个由Haskell编写的编辑器。然而这实质上算作IDE，其附带Cabal文件的编辑器。笔者已经成功在Windows上与Ubuntu上编译。详细信息访问\url{http://www.leksah.org}
-  \item[Atom] 这个编辑器是由Github，Inc 开发的开源编译器有多款支持Haskell的插件。详细信息访问\url{https://wiki.haskell.org/IDEs#Atom}
-  \item[EclipseFP] 这个是一个基于Eclipse做的插件用于支援Eclipse编写Haskell。详细信息访问\url{http://eclipsefp.github.io/}
+  \item[Vim]\verb"vim" 编辑器是被广泛使用的编辑器。\verb"vim"自带 Haskell 的语法高亮。同时\verb"vim" 有 对 Haskell 的交互——GHCi提供支持。详细信息访问： \url{http://www.vim.org/scripts/script.php?script_id=2356}。
+  \item[Emacs] 可以算是人气比较高的编辑器，使用又强大。emacs通体有Lisp编写，然而并没有什么卵用。。\\ 详细信息访问
+  \url{https://wiki.haskell.org/Emacs}。
+  \item[Yi]是一个由Haskell编写而可由Haskell扩展。详细信息访问 \url{https://wiki.haskell.org/Yi}。
+  \item[Sublime Text]  是一个先进的编辑器。详细信息访问\url{https://wiki.haskell.org/IDEs#Sublime-Haskell}
+  \item[Leksah] 也是一个由Haskell编写的编辑器。然而这实质上算作IDE，其附带Cabal文件的编辑器。笔者已经成功在Windows 上与Ubuntu上编译。详细信息访问\url{http://www.leksah.org}。
+  \item[Atom] 这个编辑器是由Github，Inc 开发的开源编译器有多款支持Haskell的插件。详细信息访问\url{https://wiki.haskell.org/IDEs#Atom}。
+  \item[EclipseFP] 这个是一个基于Eclipse做的插件用于支援Eclipse编写Haskell。详细信息访问 \url{http://eclipsefp.github.io/}。。
 \end{description}
 其余可以使用的编辑器，参见\url{https://wiki.haskell.org/IDEs} 与 \url{https://wiki.haskell.org/Editors}。虽然上述的东西肯能不全，有限本质上算作插件而非编辑器。然而还希望有所帮助。
+\section{软包的安装}
+安装软件包的基本指令
+\begin{lstlisting}[language=bash]
+  $cabal update
+  $cabal install [`报的名称`]
+\end{lstlisting}
+
+在终端中键入 \lstinline[language=bash]{cabal help}来获得帮助 \lstinline[language=bash]{cabal help command} 可以获得一些关于“command”的帮助。
+\section{GHCi}
+GHCi 是大部分时候“调戏”Haskell 的主战场下面是一些有用的命令。
+\begin{itemize}
+	\item :? 是获取帮助的命令
+	\item :set prompt "ghci>" GHCi的默认提示符是 Prelude> 如果看的不顺眼，可以使用该命令替换。
+	\item :t :type 这个命令是用来获取一个函数的类型绑定 \footnote{就如同 C 语言中的函数声明或者函数类型。}。
+	\item :r :reload 当原文件被修改时，使用此命令重新导入。
+	\item :l :load 导入指定文件夹下的文件。
+	\item :edit 用于编辑当前已经导入的文件。
+	\item :m :module 用于导入一个库 \footnote{也可以使用import 命令 只不过import 只能导入一个模块一次。}。导入Data.String 与 Data.Map 两个模块，再除去。
+\begin{lstlisting}
+  :m + Data.Map Data.String
+  :m - Data.Map Data.String
+\end{lstlisting}
+	\item :q :quit 退出
+\end{itemize}
+
+\documentEnd
 \endinput 
