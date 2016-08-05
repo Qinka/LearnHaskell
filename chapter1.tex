@@ -26,7 +26,7 @@ Haskell Platform 这需要去 \url{https://www.haskell.org/platform/windows.html
 对于Haskell Platform 和 GHC 的安装方法请参考网上。
 \section{效率利器-编辑器}
 \begin{description}
-  \item[Vim]\verb"vim" 编辑器是被广泛使用的编辑器。\verb"vim"自带 Haskell 的语法高亮。同时\verb"vim" 有 对 Haskell 的交互——GHCi提供支持。详细信息访问： \url{http://www.vim.org/scripts/script.php?script_id=2356}。
+  \item[Vim]\verb"vim" 编辑器是被广泛使用的编辑器。\verb"vim"自带 Haskell 的语法高亮。同时\verb"vim" 有 对 Haskell 的交互——GHCi 提供支持。详细信息访问： \url{http://www.vim.org/scripts/script.php?script_id=2356}。
   \item[Emacs] 可以算是人气比较高的编辑器，使用又强大。emacs通体有Lisp编写，然而并没有什么卵用。。\\ 详细信息访问
   \url{https://wiki.haskell.org/Emacs}。
   \item[Yi]是一个由Haskell编写而可由Haskell扩展。详细信息访问 \url{https://wiki.haskell.org/Yi}。
@@ -60,6 +60,48 @@ GHCi 是大部分时候“调戏”Haskell 的主战场下面是一些有用的�
 \end{lstlisting}
 	\item :q :quit 退出
 \end{itemize}
+\section{源文件、注释、模块与Hackage}
+Haskell 的源文件的扩展名是 \verb".hs" 与 \verb".lhs" 后者是 Literate Haskell Script。后者通常会与 \TeX 或者 \LaTeX 一起出现。后者通过程序 lhs2tex 可以获得到tex代码 \footnote{请参阅 \url{http://www.andres-loeh.de/lhs2tex/}。}。
+\begin{lstlisting}[language=Haskell,caption={lhs示例}]
+> main :: IO ()
+> main = putStrLn "Hello, Haskell!"
+\end{lstlisting}
+
+
+
+\begin{lstlisting}[language={[LaTeX]TeX},caption={lhs示例}]
+\documentclass{article}
+%include polycode.fmt
+\begin{document}
+This is the famous "Hello world" example,
+written in Haskell:
+\begin{code}
+main  ::  IO ()
+main  =   putStrLn "Hello, world!"
+\end{code}
+\end{document}
+\end{lstlisting}
+
+Haskell 的注释符号是 \verb"--" 与 \verb"{- note -}"。前者是单行注释，后置用于多行注释。\verb"{-# Options #-}" 这个则是有关于编译参数。
+\begin{lstlisting}[language=Haskell,caption={引号替代}]
+  {-# LANGUAGE QuasiQuotes #-}
+  [hamlet|<p>This is quasi-quoted Hamlet.|]
+\end{lstlisting}
+Haskell 的模块——\verb"module"包含在各种Haskell的包之中。其中 Prelude 库是预加载库，在各种编译器、解释器与交互环境中是自动加载。 Haskell 中模块是包含在包中的。包主要是通过 Hackage 与 Cabal 安装。安装后模块再被“吊装”。
+
+\subparagraph{Hackage} \footnote{\url{http://hackage.haskell.org}}
+大部分 Haskell 的包都通过Hackage分发。他们的作者将打包好的包上传至Hackage上后以供人们下载。
+
+\subparagraph{Cabal}\footnote{ \url{ http://www.haskell.org/cabal/}}
+绝大部分的包都是通过Cabal 安装。它可以从hackage.haskell.org下载最新的包并安装。也可以从本地文件安装。
+
+\subparagraph{Hoogle}\footnote{\url{http://hoogle.haskell.org}} 一个用于搜索 Haskell API的网站。
+\subparagraph{Hayoo}\footnote{\url{http://hayoo.fh-wedel.de/}} 同样是一个 API搜索站。
+
+
+
+
+
 
 \documentEnd
 \endinput 

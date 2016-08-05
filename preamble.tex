@@ -45,7 +45,7 @@
 %part格式设置
 \titleformat{\chapter}[rightmargin]{\bfseries\Huge}{\hbox{第 \thechapter 章}}{1em}{}[]
 \titleformat{\section}[hang]{\bfseries\Large}{\thesection}{1em}{}[]
-
+\titlecontents{chapter}[1em]{\bfseries\Large}{\contentspush{\thecontentslabel\ }}{}{\titlerule*[1pt]{-}\contentspage}
 %作者
 \author{Qinka\\qinka@live.com}
 

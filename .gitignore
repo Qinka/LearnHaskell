@@ -124,7 +124,7 @@ sympy-plots-for-*.tex/
 # WinEdt
 *.bak
 *.sav
-
+*.prj
 
 #for Haskell
 
